@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,linux,macos,windows,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,linux,macos,windows,git
 
+### Custom ###
+# Private test files
+*.private.test.ts
+
 ### Git ###
 # Created by git for backups. To disable backups in Git:
 # $ git config --global mergetool.keepBackup false
