@@ -2,7 +2,8 @@
   "name": "savvytable",
   "version": "1.0.0",
   "description": "Use the SeaTable API in NodeJS",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
@@ -21,6 +22,9 @@
   "keywords": [
     "seatable",
     "api"
+  ],
+  "files": [
+    "lib"
   ],
   "author": "savvytec",
   "license": "ISC",
