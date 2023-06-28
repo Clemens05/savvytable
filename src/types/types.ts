@@ -30,13 +30,6 @@ export const Lit = <T extends z.Primitive>(value: T) => {
 };
 type RT_Lit = ReturnType<typeof Lit>;
 
-/**
- * @deprecated Use `RowTypes.Optional()` for `Row` or `QueryTypes.Optional()` for `QueryResult` instead.
- */
-export const Optional = <T extends z.ZodType>(value: T) => {
-  return value.optional();
-};
-
 export namespace QueryTypes {
   export const Optional = <T extends z.ZodType>(value: T) => {
     return value.nullable();
