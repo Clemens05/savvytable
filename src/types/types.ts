@@ -30,71 +30,76 @@ export const Lit = <T extends z.Primitive>(value: T) => {
 };
 type RT_Lit = ReturnType<typeof Lit>;
 
+/**
+ * @deprecated Use `RowTypes.Optional()` for `Row` or `QueryTypes.Optional()` for `QueryResult` instead.
+ */
 export const Optional = <T extends z.ZodType>(value: T) => {
   return value.optional();
 };
 
 export namespace QueryTypes {
-  export const Text = z.string().nullable();
-  export const LongText = z.string().nullable();
-  export const Number = z.number().nullable();
-  export const Percent = z.number().nullable();
-  export const Dollar = z.number().nullable();
-  export const Euro = z.number().nullable();
-  export const Yuan = z.number().nullable();
+  export const Optional = <T extends z.ZodType>(value: T) => {
+    return value.nullable();
+  };
+  export const Text = z.string();
+  export const LongText = z.string();
+  export const Number = z.number();
+  export const Percent = z.number();
+  export const Dollar = z.number();
+  export const Euro = z.number();
+  export const Yuan = z.number();
   export const AutoNumber = z.string();
   export const Checkbox = z.boolean();
-  export const Email = z.string().email().nullable();
-  export const URL = z.string().url().nullable();
-  export const Duration = z.string().nullable();
-  export const Image = z.array(z.string()).nullable(); // maybe z.array(z.string().url())
-  export const Rating = z.number().nullable();
-  export const Geolocation = z
-    .intersection(
-      z.object({
-        lng: z.number(),
-        lat: z.number(),
-      }),
-      z.object({
-        country_region: z.string(),
-      }),
-    )
-    .nullable();
+  export const Email = z.string().email();
+  export const URL = z.string().url();
+  export const Duration = z.string();
+  export const Image = z.array(z.string()); // maybe z.array(z.string().url())
+  export const Rating = z.number();
+  export const Geolocation = z.intersection(
+    z.object({
+      lng: z.number(),
+      lat: z.number(),
+    }),
+    z.object({
+      country_region: z.string(),
+    }),
+  );
   export const Button = z.null();
-  export const Link = z
-    .array(
-      z.object({
-        row_id: z.string(),
-        display_value: z.string(),
-      }),
-    )
-    .nullable();
-  export const Collaborator = z.array(z.string()).nullable();
+  export const Link = z.array(
+    z.object({
+      row_id: z.string(),
+      display_value: z.string(),
+    }),
+  );
+  export const Collaborator = z.array(z.string());
   export const _Id = z.string();
   export const _Ctime = z.string();
   export const _Mtime = z.string();
   export const _Archived = z.boolean();
-  export const _Locked = z.boolean().nullable();
+  export const _Locked = z.boolean();
   export const _LockedBy = z.string(); // User
   export const _Creator = z.string();
   export const _LastModifier = z.string();
   export const SingleSelect = <T extends [RT_Lit, RT_Lit, ...RT_Lit[]]>(values: T) => {
-    return z.union(values).nullable();
+    return z.union(values);
   };
-  export const LazySingleSelect = z.string().nullable();
+  export const LazySingleSelect = z.string();
   export const MultipleSelect = <T extends [RT_Lit, RT_Lit, ...RT_Lit[]]>(values: T) => {
-    return z.array(z.union(values)).nullable();
+    return z.array(z.union(values));
   };
   export const LazyMultipleSelect = z.array(z.string());
-  export const Formula = <T extends z.ZodType>(type: T): z.ZodNullable<T> => {
-    return type.nullable();
+  export const Formula = <T extends z.ZodType>(type: T): T => {
+    return type;
   };
-  export const LinkFormula = <T extends z.ZodType>(type: T): z.ZodNullable<T> => {
-    return type.nullable();
+  export const LinkFormula = <T extends z.ZodType>(type: T): T => {
+    return type;
   };
 }
 
 export namespace RowTypes {
+  export const Optional = <T extends z.ZodType>(value: T) => {
+    return value.optional();
+  };
   export const Text = QueryTypes.Text;
   export const LongText = QueryTypes.LongText;
   export const Number = QueryTypes.Number;
