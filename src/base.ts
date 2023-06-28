@@ -12,6 +12,7 @@ import {
 } from './types/api-responses';
 import { toArray, RowType, AsType, AsArray, QueryResultType } from './types/types';
 import { OrderDirection, RowInsertPosition } from './types/general';
+import { Table } from './table';
 
 export class Base {
   private readonly url: string;
@@ -28,6 +29,14 @@ export class Base {
     if (url.endsWith('/')) url = url.slice(0, -1);
     this.url = url;
     this.token = token;
+  }
+
+  public Table(args: { name: string }): Table {
+    const { name } = args;
+    return new Table({
+      base: this,
+      tableName: name,
+    });
   }
 
   private noAuthHeaders(): {

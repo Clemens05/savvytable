@@ -4,6 +4,7 @@
 ### Custom ###
 # Private test files
 *.private.test.ts
+lib/
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
