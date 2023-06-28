@@ -32,6 +32,7 @@ npm install savvytable
 - [Admin: Initialization](#admin-initialization)
 - [Admin: Get User Info](#admin-get-user-info)
 - [Extend Row Schema With Zod](#extend-row-schema-with-zod)
+- [Check Webhook (Express Example)](#check-webhook-express-example)
 
 ### <a name="base-initialization"></a> Base: Initialization
 
@@ -219,6 +220,25 @@ const admin = await Admin.withCredentials({
 ```ts
 const result = await admin.getUser({
   userId: '2433b1c2fac24caba92f4c48019354fa@auth.local',
+});
+```
+
+### <a name="check-webhook-express-example"></a> Check Webhook (Express Example)
+
+```ts
+import { WebhookSchema, Webhook } from 'savvytable';
+import express from 'express';
+
+const app = express.app();
+
+app.post('/v1/base-updated/', (req, res) => {
+  const parsed = WebhookSchema.safeParse(req.body);
+
+  if (parsed.success) {
+    const data: Webhook = parsed.data;
+  } else {
+    // wrong webhook data
+  }
 });
 ```
 
