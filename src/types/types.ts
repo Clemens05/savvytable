@@ -120,7 +120,7 @@ export namespace RowTypes {
   export const _Creator = QueryTypes._Creator;
   export const _LastModifier = QueryTypes._LastModifier;
   export const SingleSelect = QueryTypes.SingleSelect;
-  export const LazySingleSelect = QueryTypes.LazyMultipleSelect;
+  export const LazySingleSelect = QueryTypes.LazySingleSelect;
   export const MultipleSelect = QueryTypes.MultipleSelect;
   export const LazyMultipleSelect = QueryTypes.LazyMultipleSelect;
   export const Formula = QueryTypes.Formula;
